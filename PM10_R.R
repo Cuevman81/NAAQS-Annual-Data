@@ -10,8 +10,8 @@ library(maps)
 library(ggplot2)
 library(aqsr)
 
-myuser <- create_user(email="RCuevas@mdeq.ms.gov",
-                      key="greyhawk63")
+myuser <- create_user(email="",
+                      key="")
 
 
 #PM10 Summary
