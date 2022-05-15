@@ -46,3 +46,86 @@ Ozone4H <- read.csv("Ozone4H.csv")
 points(x = Ozone4H$longitude, y = Ozone4H$latitude, pch = 19, col = 'blue')
 title(main = "Annual 4th Highest Ozone Value (ppm)")
 text(Ozone4H$longitude, y = Ozone4H$latitude, labels = Ozone4H$fourth_max_value, pos = 1, col = 'darkgreen', font = 2)
+
+#Daily Ozone Data for Sites Across the State
+download.file("https://aqs.epa.gov/aqsweb/airdata/daily_44201_2021.zip",
+              destfile="daily_44201_2021.zip")
+
+unzip("daily_44201_2021.zip")
+d = read.csv("daily_44201_2021.csv")
+
+names(d)
+
+d = d[d$State.Name == "Mississippi",]
+
+head(d)
+
+d$Date.Local = as.Date(d$Date.Local)
+
+plot( factor(d$Local.Site.Name), d$X1st.Max.Value )
+
+unique(d$Local.Site.Name)
+
+      #Linear trends and Summaries
+ggplot( d[d$Local.Site.Name =="Cleveland Delta State",], aes(x = Date.Local, y = X1st.Max.Value)) +
+geom_point(aes(color = X1st.Max.Value), size = 2) +
+geom_smooth() +
+labs(title="Cleveland Daily 8 Hour Max Ozone") +
+theme(axis.text.x=element_text(angle=70, hjust=1))
+summary (d[d$Local.Site.Name == "Cleveland Delta State",])
+
+ggplot( d[d$Local.Site.Name =="Gulfport Youth Court",], aes(x = Date.Local, y = X1st.Max.Value)) +
+  geom_point(aes(color = X1st.Max.Value), size = 2) +
+  geom_smooth() +
+  labs(title="Gulfport Daily 8 Hour Max Ozone") +
+  theme(axis.text.x=element_text(angle=70, hjust=1))
+summary (d[d$Local.Site.Name == "Gulfport Youth Court",])
+
+ggplot( d[d$Local.Site.Name =="Hernando",], aes(x = Date.Local, y = X1st.Max.Value)) +
+  geom_point(aes(color = X1st.Max.Value), size = 2) +
+  geom_smooth() +
+  labs(title="Hernando Daily 8 Hour Max Ozone") +
+  theme(axis.text.x=element_text(angle=70, hjust=1))
+summary (d[d$Local.Site.Name == "Hernando",])
+
+ggplot( d[d$Local.Site.Name =="Hinds CC",], aes(x = Date.Local, y = X1st.Max.Value)) +
+  geom_point(aes(color = X1st.Max.Value), size = 2) +
+  geom_smooth() +
+  labs(title="Hinds CC Daily 8 Hour Max Ozone") +
+  theme(axis.text.x=element_text(angle=70, hjust=1))
+summary (d[d$Local.Site.Name == "Hinds CC",])
+
+ggplot( d[d$Local.Site.Name =="Meridian",], aes(x = Date.Local, y = X1st.Max.Value)) +
+  geom_point(aes(color = X1st.Max.Value), size = 2) +
+  geom_smooth() +
+  labs(title="Meridian Daily 8 Hour Max Ozone") +
+  theme(axis.text.x=element_text(angle=70, hjust=1))
+summary (d[d$Local.Site.Name == "Meridian",])
+
+ggplot( d[d$Local.Site.Name =="Jackson NCORE",], aes(x = Date.Local, y = X1st.Max.Value)) +
+  geom_point(aes(color = X1st.Max.Value), size = 2) +
+  geom_smooth() +
+  labs(title="Jackson NCORE Daily 8 Hour Max Ozone") +
+  theme(axis.text.x=element_text(angle=70, hjust=1))
+summary (d[d$Local.Site.Name == "Jackson NCORE",])
+
+ggplot( d[d$Local.Site.Name =="Pascagoula",], aes(x = Date.Local, y = X1st.Max.Value)) +
+  geom_point(aes(color = X1st.Max.Value), size = 2) +
+  geom_smooth() +
+  labs(title="Pascagoula Daily 8 Hour Max Ozone") +
+  theme(axis.text.x=element_text(angle=70, hjust=1))
+summary (d[d$Local.Site.Name == "Pascagoula",])
+
+ggplot( d[d$Local.Site.Name =="TUPELO AIRPORT NEAR OLD NWS OFFICE",], aes(x = Date.Local, y = X1st.Max.Value)) +
+  geom_point(aes(color = X1st.Max.Value), size = 2) +
+  geom_smooth() +
+  labs(title="Tupelo Daily 8 Hour Max Ozone") +
+  theme(axis.text.x=element_text(angle=70, hjust=1))
+summary (d[d$Local.Site.Name == "TUPELO AIRPORT NEAR OLD NWS OFFICE",])
+
+ggplot( d[d$Local.Site.Name =="Waveland",], aes(x = Date.Local, y = X1st.Max.Value)) +
+  geom_point(aes(color = X1st.Max.Value), size = 2) +
+  geom_smooth() +
+  labs(title="Waveland Daily 8 Hour Max Ozone") +
+  theme(axis.text.x=element_text(angle=70, hjust=1))
+summary (d[d$Local.Site.Name == "Waveland",])
