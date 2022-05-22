@@ -49,14 +49,14 @@ ggplot(SO23H, aes(x = local_site_name , SO23H, aes(x = local_site_name))) +
 
 #Statewide Map of 1-HR SO2(PPB)
 map(database = 'county','mississippi')
-newdataSO21H <- read.csv("SO21HR.csv")
-points(x = newdataSO21H$longitude, y = newdataSO21H$latitude, pch = 19, col = 'blue')
+SO21H <- read.csv("SO21HR.csv")
+points(x = SO21H$longitude, y = SO21H$latitude, pch = 19, col = 'blue')
 title(main = "1-HR SO2")
 text(SO21H$longitude, y = SO21H$latitude, labels = SO21H$ninety_ninth_percentile, pos = 2, font = 2, cex = 1.5)
 
 #Statewide Map of 3-HR SO2(PPB)
 map(database = 'county','mississippi')
-newdataCO8H <- read.csv("SO23HR.csv")
+SO23H <- read.csv("SO23HR.csv")
 points(x = SO23H$longitude, y = SO23H$latitude, pch = 19, col = 'blue')
 title(main = "3-Hour SO2")
 text(SO23H$longitude, y = SO23H$latitude, labels = SO23H$second_max_value, pos = 2, font = 2, cex = 1.5)
