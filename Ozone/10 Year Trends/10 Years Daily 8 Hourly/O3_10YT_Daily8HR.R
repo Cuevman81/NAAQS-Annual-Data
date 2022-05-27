@@ -10,7 +10,7 @@ library(ggplot2)
 library(openair)
 library(lubridate)
 
-#Daily Ozone Data for Sites Across the State
+#Daily 8HR Ozone Data for Sites Across the State
 
 download.file("https://aqs.epa.gov/aqsweb/airdata/daily_44201_2012.zip",
               destfile="daily_44201_2012.zip")
