@@ -216,16 +216,6 @@ pollutionRose(aq_met_Hernando,
 )
 
 
-aq_met_Hernando <- selectRunning(aq_met_Hernando, pollutant = "Sample.Measurement", 
-                                     threshold = 0.071,
-                                     run.len = 1)
-table(aq_met_Hernando$criterion)
-
-pollutionRose(aq_met_Hernando, pollutant = "Sample.Measurement", 
-              type = "criterion")
-
-
-
 #Scatter Plots
 scatterPlot(aq_met_Hernando, x = "NONOxNOy", y = "Sample.Measurement", avg.time = "day", key = FALSE)
 
@@ -283,9 +273,12 @@ timeVariation(aq_met_Hernando,
 #Thresholds
 
 aq_met_Hernando <- selectRunning(aq_met_Hernando, pollutant = "Sample.Measurement", 
-                                     threshold = 71, 
-                                     run.len = 8)
+                                     threshold = 0.071,
+                                     run.len = 1)
+table(aq_met_Hernando$criterion)
 
+pollutionRose(aq_met_Hernando, pollutant = "Sample.Measurement", 
+              type = "criterion")
 
 
 
