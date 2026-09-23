@@ -28,6 +28,7 @@ write.csv(O3_10YT, file='History/Ozone19.csv')
 library(dplyr)
 library(readr)
 O310YT <- list.files(path = "History", full.names = TRUE) %>% 
+  setdiff("History/12_21.csv") %>%   # skip this script's own output from an earlier run
   lapply(read_csv) %>% 
   bind_rows 
 write.csv(O310YT, "History/12_21.csv")

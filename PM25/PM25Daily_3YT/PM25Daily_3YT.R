@@ -25,6 +25,7 @@ unzip("Data/daily_88101_2021.zip")
 p = read.csv("daily_88101_2021.csv")
 
 p2 <- list.files(path = "Data", full.names = TRUE) %>% 
+  setdiff("Data/19_21.csv") %>%   # skip this script's own output from an earlier run
   lapply(read_csv) %>% 
   bind_rows 
 write.csv(p2, "Data/19_21.csv")
