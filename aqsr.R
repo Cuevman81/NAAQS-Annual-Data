@@ -81,7 +81,7 @@ ggplot(newdataPM25, aes(x = local_site_name)) +
 map(database = 'county','mississippi')
 PM25Annual <- read.csv("PM25Annual.csv")
 points(x = PM25Annual$longitude, y = PM25Annual$latitude, pch = 19, col = 'blue')
-title(main = "Annual Weighted PM2.5")
+title(main = "Annual Mean PM2.5 (one year, not a design value)")
 text(PM25Annual$longitude, y = PM25Annual$latitude, labels = PM25Annual$arithmetic_mean, pos = 3, font = 2)
 
 #Statewide Map of 24-Hour PM25(PPB)

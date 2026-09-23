@@ -34,17 +34,17 @@ write.csv(PM10_21, file="PM10_21.csv")
 summary(file = 'PM10_21.csv', PM10_21$first_max_value)
 summary(file = 'PM10_21.csv', PM10_21$second_max_value)
 
-#Annual PM10
+#PM10 24-Hour 2nd Highest Value
 ggplot(PM10_21, aes(x = local_site_name)) +
-  geom_point(aes(y = second_max_value, color = "Annual"), size = 3) +
-  xlab("Site")+ylab("PM2.5") +
-  labs(title="Annual PM10") +
+  geom_point(aes(y = second_max_value, color = "24-Hour 2nd Max"), size = 3) +
+  xlab("Site")+ylab("PM10 (ug/m3)") +
+  labs(title="PM10 24-Hour 2nd Highest Value") +
   theme(axis.text.x=element_text(angle=70, hjust=1))
 
 
-#Statewide Map of Annual PM10(PPB)
+#Statewide Map of PM10 24-Hour 2nd Highest Value (ug/m3)
 map(database = 'county','mississippi')
 PM10Annual <- read.csv("PM10_21.csv")
 points(x = PM10Annual$longitude, y = PM10Annual$latitude, pch = 19, col = 'blue')
-title(main = "Annual PM10")
+title(main = "PM10 24-Hour 2nd Highest Value")
 text(PM10Annual$longitude, y = PM10Annual$latitude, labels = PM10Annual$second_max_value, pos = 3, font = 2)
