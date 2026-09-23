@@ -86,11 +86,14 @@ names(d)[names(d) == "Date.Local"] <- "date"
 d$date = as.Date(d$date)
 
 #Calendar Plots of 8 Hour Color Coded with respect to AQI Scale
+# 8-hour ozone AQI breakpoints (ppm) and colours from EPA's AQI Technical
+# Assistance Document (Tables 6 and 2). dig.lab = 3 stops openair rounding
+# the breaks to 2 decimals.
 calendarPlot(d[d$Local.Site.Name == "Hernando",],
              pollutant = "X1st.Max.Value", year = 2012,
-             breaks = c(0.000, 0.054, 0.071, 0.084, 0.096),
-             labels = c("Good", "Moderate", "USG", "Unhealthy"),
-             cols = c("green", "yellow", "orange", "red"),
+             breaks = list(breaks = c(0.000, 0.054, 0.070, 0.085, 0.105, 0.200), dig.lab = 3),
+             labels = c("Good", "Moderate", "USG", "Unhealthy", "Very Unhealthy"),
+             cols = c("#00E400", "#FFFF00", "#FF7E00", "#FF0000", "#8F3F97"),
              statistic = "max",
 )
 

@@ -96,14 +96,18 @@ calendarPlot(aq_met_Hernando, pollutant = "Sample.Measurement", year = 2020, mon
 calendarPlot(aq_met_Hernando, pollutant = "Sample.Measurement", year = 2018, annotate = "ws", main = "Hourly Sample.Measurement")
 
 
+# Colours below use the 8-hour ozone AQI breakpoints (ppm) and colours from EPA's
+# AQI Technical Assistance Document (Tables 6 and 2). These are hourly values, so
+# they are a reference scale, not an AQI. dig.lab = 3 stops openair rounding the
+# breaks to 2 decimals.
 calendarPlot(aq_met_Hernando,
              pollutant = "Sample.Measurement", year = 2012,
              annotate = "ws",
-             breaks = c(0.000, 0.054, 0.071, 0.084, 0.096),
-             labels = c("Good", "Moderate", "USG", "Unhealthy"),
-             cols = c("green", "yellow", "orange", "red"),
+             breaks = list(breaks = c(0.000, 0.054, 0.070, 0.085, 0.105, 0.200), dig.lab = 3),
+             labels = c("Good", "Moderate", "USG", "Unhealthy", "Very Unhealthy"),
+             cols = c("#00E400", "#FFFF00", "#FF7E00", "#FF0000", "#8F3F97"),
              statistic = "max",
-             main = "Hernando Hourly Max Ozone with Wind Direction/Speed Yearly Calendar"
+             main = "Hernando Hourly Max Ozone with Wind Direction/Speed Yearly Calendar (8-hour AQI colours)"
 )
 
 
@@ -167,19 +171,19 @@ polarPlot(aq_met_Hernando, pollutant = "Sample.Measurement", statistic = "max", 
 
 polarPlot(aq_met_Hernando,
           pollutant = "Sample.Measurement",
-          breaks = c(0.000, 0.054, 0.070, 0.085, 0.105, 0.200),
+          breaks = list(breaks = c(0.000, 0.054, 0.070, 0.085, 0.105, 0.200), dig.lab = 3),
           labels = c("Good", "Moderate", "USG", "Unhealthy", "Very Unhealthy"),
-          cols = c("green", "yellow", "orange", "red", "purple"),
+          cols = c("#00E400", "#FFFF00", "#FF7E00", "#FF0000", "#8F3F97"),
           statistic = "max",
           min.bin = 12,
-          main = "Daily 8HR Ozone Max Yearly Calendar DeSoto County"
+          main = "Hourly Ozone Max by Wind, DeSoto County (8-hour AQI colours)"
 )
 
 
 polarFreq(aq_met_Hernando, pollutant = "Sample.Measurement", 
           type = "year",
           statistic = "max",
-          main = "Daily 8HR Ozone Max Directional Plots by Year DeSoto County",
+          main = "Hourly Ozone Max Directional Plots by Year DeSoto County",
           min.bin = 9)
 
 polarFreq(aq_met_Hernando, pollutant = "Sample.Measurement", ws.int = 30, 
@@ -255,9 +259,9 @@ trendLevel(aq_met_Hernando, pollutant = "Sample.Measurement", y = "wd",
 trendLevel(aq_met_Hernando, pollutant = "Sample.Measurement",
            x = "week",
            border = "white",  statistic = "max",
-           breaks = c(0, 0.054, 0.070, 0.085, 0.105, 0.200),
+           breaks = list(breaks = c(0, 0.054, 0.070, 0.085, 0.105, 0.200), dig.lab = 3),
            labels = c("good", "moderate", "USG", "Unhealthy", "Very Unhealthy"),
-           cols = c("forestgreen", "yellow", "orange", "red", "purple"),
+           cols = c("#00E400", "#FFFF00", "#FF7E00", "#FF0000", "#8F3F97"),
            key.position = "top")
 
 # Time Variation in the median, 25/75th and 5/95th quantile values for PM10. The shading shows the extent to the 25/75th and 5/95th quantiles.
