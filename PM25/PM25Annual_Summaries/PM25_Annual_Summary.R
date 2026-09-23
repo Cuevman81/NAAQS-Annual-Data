@@ -1,10 +1,5 @@
 #Installing or importing all packages
 
-library(expss)
-library(VIF)
-library(forecast)
-library(Metrics)
-library(DMwR2)
 library(dplyr)
 library(readr)
 library(maps)
